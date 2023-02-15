@@ -9,7 +9,7 @@ class APIException(Exception):
 
 class Convertor:
     @staticmethod
-    def get_price(base, sym, amount):
+    def get_price(sym, base, amount):
         try:
             base_key = exchanges[base.lower()]
         except KeyError:

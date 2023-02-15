@@ -25,12 +25,12 @@ def values(message: telebot.types.Message):
 @bot.message_handler(content_types=['text', ])
 def convert(message: telebot.types.Message):
     try:
-        base, sym, amount = message.text.split()
+        sym, base, amount = message.text.split()
     except ValueError as e:
         bot.reply_to(message, 'Невернок количество  параметров!')
 
     try:
-        new_price = Convertor.get_price(base, sym, amount)
+        new_price = Convertor.get_price(sym, base, amount)
         bot.reply_to(message, f"Цена {amount} {sym} в {base} : {new_price}")
     except APIException as e:
         bot.reply_to(message, f"Ошибка в команде:\n{e}")
